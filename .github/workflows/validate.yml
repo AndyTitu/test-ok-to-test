@@ -2,12 +2,11 @@
 name: Validate
 
 on:
-  push:
-    paths-ignore:
-      - '**.md'
   pull_request:
     paths-ignore:
       - '**.md'
+  repository_dispatch:
+    types: [ ok-to-test-command ]
 
 jobs:
   build:
