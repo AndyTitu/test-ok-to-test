@@ -6,7 +6,7 @@ import (
 )
 
 func TestSecretAccess(t *testing.T) {
-	val := os.Getenv("PERSONAL_ACCESS_TOKEN")
+	val := os.Getenv("OP_SERVICE_ACCOUNT_TOKEN")
 	if val == "" {
 		panic("no access to secrets")
 	}
