@@ -4,7 +4,8 @@ name: Validate
 on:
   pull_request:
   repository_dispatch:
-    types: [ ok-to-test-command ]
+    checkout-ref:
+      required: true
 
 jobs:
   build:
@@ -43,10 +44,10 @@ jobs:
       checks: write
     if: |
       github.event_name == 'repository_dispatch' &&
-      github.event.client_payload.slash_command.args.named.sha != '' &&
+      github.event.inputs.checkout-ref != '' &&
       contains(
         github.event.client_payload.pull_request.head.sha,
-        github.event.client_payload.slash_command.args.named.sha
+        github.event.inputs.checkout-ref
       )
     steps:
 
