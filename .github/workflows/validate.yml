@@ -4,8 +4,10 @@ name: Validate
 on:
   pull_request:
   workflow_dispatch:
-    checkout-ref:
-      required: true
+    inputs:
+      checkout-ref:
+        description: "The commit SHA of the code version you'd like to test"
+        required: true
 
 jobs:
   build:
