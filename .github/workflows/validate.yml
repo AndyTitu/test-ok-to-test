@@ -46,7 +46,7 @@ jobs:
       pull-requests: write
       checks: write
     if: |
-      github.event_name == 'repository_dispatch' &&
+      github.event_name == 'workflow_dispatch' &&
       github.event.inputs.checkout-ref != '' &&
       contains(
         github.event.client_payload.pull_request.head.sha,
