@@ -24,6 +24,7 @@ jobs:
 
   # Branch-based pull request
   integration-trusted:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     env:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
