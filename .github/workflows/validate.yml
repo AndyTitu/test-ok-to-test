@@ -3,7 +3,7 @@ name: Validate
 
 on:
   pull_request:
-  repository_dispatch:
+  workflow_dispatch:
     checkout-ref:
       required: true
 
