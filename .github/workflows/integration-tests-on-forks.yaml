@@ -1,4 +1,4 @@
-name: Validate
+name: Integration Tests on Forked PRs
 
 on:
   workflow_dispatch:
