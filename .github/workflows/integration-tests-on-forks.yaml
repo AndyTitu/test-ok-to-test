@@ -16,17 +16,18 @@ jobs:
       checks: write
     if: github.event_name == 'workflow_dispatch'
     steps:
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '^1.21'
 
-      # Check out merge commit
-      - name: Fork based /ok-to-test checkout
+      # Check out PR from input
+      - name: Checkout specified forked PR
         uses: actions/checkout@v4
         with:
           ref: 'refs/pull/${{ github.event.inputs.forked-pr-number }}/merge'
 
-      # <insert integration tests needing secrets>
-
-      - run: |
-          echo "Integration tests... success! ;-)"
+      - run: go test src/variable_test.go
 
       # Update check run called "integration-fork"
       - uses: actions/github-script@v6
