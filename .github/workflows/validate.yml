@@ -43,3 +43,5 @@ jobs:
     runs-on: ubuntu-latest
     # this job is always skipped and its status is only updated when the integration tests are permitted to run on this code
     if: github.event_name != 'pull_request' && github.event_name != 'push'
+    steps:
+      - uses: actions/checkout@v4
